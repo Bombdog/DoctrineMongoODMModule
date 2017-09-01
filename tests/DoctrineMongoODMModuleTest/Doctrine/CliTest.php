@@ -18,7 +18,7 @@
 namespace DoctrineMongoODMModuleTest\Doctrine;
 
 use DoctrineMongoODMModuleTest\ServiceManagerFactory;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests used to verify that command line functionality is active
@@ -27,7 +27,7 @@ use PHPUnit_Framework_TestCase;
  * @link    http://www.doctrine-project.org/
  * @author  Adam Homsi <adam.homsi@gmail.com>
  */
-class CliTest extends PHPUnit_Framework_TestCase
+class CliTest extends TestCase
 {
     /**
      * @var \Symfony\Component\Console\Application
@@ -90,6 +90,10 @@ class CliTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(
             'Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateHydratorsCommand',
             $this->cli->get('odm:generate:hydrators')
+        );
+        $this->assertInstanceOf(
+            'Doctrine\ODM\MongoDB\Tools\Console\Command\GeneratePersistentCollectionsCommand',
+            $this->cli->get('odm:generate:persistent-collections')
         );
         $this->assertInstanceOf(
             'Doctrine\ODM\MongoDB\Tools\Console\Command\GenerateProxiesCommand',
